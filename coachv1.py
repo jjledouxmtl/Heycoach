@@ -1,11 +1,17 @@
 import pygame
 
-screen = pygame.display.set_mode((800,600))
+screen = pygame.display.set_mode((826,460))
 
 draw_on = False
 last_pos = (0,0)
 color = (0,0,255)
 radius = 4
+
+pygame.init()
+
+bg = pygame.image.load("court.png")
+screen.blit(bg, (0,0))
+pygame.display.update()
 
 def roundline(srf, color, start, end, radius=1):
     dx = end[0]-start[0]
@@ -31,6 +37,9 @@ try:
                 pygame.display.update(pygame.draw.circle(screen, color, e.pos, radius))
                 roundline(screen, color, e.pos, last_pos, radius)
             last_pos = e.pos
+
+#        screen.blit(bg, (0,0))
+#        pygame.display.update()
 
 except StopIteration:
     pass
