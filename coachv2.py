@@ -1,7 +1,7 @@
 import pygame, sys
 
 #Currently set to size of court.png file
-screen = pygame.display.set_mode((826,460))
+screen = pygame.display.set_mode((1239,690))
 
 #Initialize variables
 draw_on = False
@@ -11,8 +11,8 @@ radius = 3
 
 pygame.init()
 
-button_green = pygame.Rect(375, 20, 30, 30)
-button_red = pygame.Rect(433, 20, 30, 30)
+button_green = pygame.Rect(585, 30, 30, 30)
+button_red = pygame.Rect(643, 30, 30, 30)
 
 
 def resetApp():
@@ -43,6 +43,8 @@ try:
         if e.type == pygame.QUIT:
             raise StopIteration
         if e.type == pygame.MOUSEBUTTONDOWN:
+            new_pos = pygame.mouse.get_pos()
+            e.pos = new_pos
             if button_green.collidepoint(e.pos):
                 resetApp()
             elif button_red.collidepoint(e.pos):
