@@ -1,7 +1,8 @@
 import pygame, sys, os
 
 #Currently set to size of court.png file
-screen = pygame.display.set_mode((1239,690))
+screen = pygame.display.set_mode((1239,690), pygame.RESIZABLE)
+pygame.display.set_caption("Hey Coach")
 
 #Initialize variables
 draw_on = False
@@ -17,7 +18,8 @@ image_dft = "court.png"
 
 def resetApp(image):
 #Set background image of court
-    bg = pygame.image.load(image)
+    w, h = pygame.display.get_surface().get_size()
+    bg = pygame.transform.scale(pygame.image.load(image), (w, h))
     screen.blit(bg, (0,0))
 #Setting buttons
     pygame.draw.rect(screen, [0,255,0], button_green)
@@ -43,6 +45,8 @@ try:
         if e.type == pygame.QUIT:
            os.remove("temp.png")
            raise StopIteration
+        if e.type == pygame.VIDEORESIZE:
+            screen = pygame.display.set_mode((e.w, e.h), pygame.RESIZABLE)
         if e.type == pygame.MOUSEBUTTONDOWN:
             if button_green.collidepoint(e.pos):
                 resetApp(image_dft)
