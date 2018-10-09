@@ -47,6 +47,7 @@ try:
            raise StopIteration
         if e.type == pygame.VIDEORESIZE:
             screen = pygame.display.set_mode((e.w, e.h), pygame.RESIZABLE)
+            resetApp(image_dft)
         if e.type == pygame.MOUSEBUTTONDOWN:
             if button_green.collidepoint(e.pos):
                 resetApp(image_dft)
