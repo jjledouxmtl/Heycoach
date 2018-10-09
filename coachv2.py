@@ -1,6 +1,6 @@
 import pygame, sys, os
 
-#Currently set to size of court.png file
+#Currently set to size of court.png file by default
 screen = pygame.display.set_mode((1239,690), pygame.RESIZABLE)
 pygame.display.set_caption("Hey Coach")
 
@@ -47,7 +47,10 @@ try:
            raise StopIteration
         if e.type == pygame.VIDEORESIZE:
             screen = pygame.display.set_mode((e.w, e.h), pygame.RESIZABLE)
-            resetApp(image_dft)
+            if os.path.isfile("temp.png"):
+                resetApp("temp.png")
+            else:
+                resetApp(image_dft)
         if e.type == pygame.MOUSEBUTTONDOWN:
             if button_green.collidepoint(e.pos):
                 resetApp(image_dft)
