@@ -1,6 +1,7 @@
 import pygame, sys, os
+from ctypes import *
 
-#Currently set to size of court.png file by default
+#Set to size of court.png file by default
 screen = pygame.display.set_mode((1239,690), pygame.RESIZABLE)
 pygame.display.set_caption("Hey Coach")
 
