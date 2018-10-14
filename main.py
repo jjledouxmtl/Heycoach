@@ -9,17 +9,15 @@ class MyPaintWidget(Widget):
     def on_touch_down(self, touch):
         with self.canvas:
             Color(0,0,1)
-            d = 10.
+            d = 8.
             Ellipse(pos=(touch.x - d / 2, touch.y -  d / 2), size=(d,d))
             touch.ud['line'] = Line(points=(touch.x, touch.y))
 
     def on_touch_move(self, touch):
         with self.canvas:
             Color(0,0,1)
-            d = 10.
-            Ellipse(pos=(touch.x - d / 2, touch.y -  d / 2), size=(d,d))
-            touch.ud['line'] = Line(points=(touch.x, touch.y))
-#        touch.ud['line'].points += [touch.x,touch.y]
+            touch.ud['line'] = Line(points=(touch.x, touch.y), width=4)
+            touch.ud['line'].points += [touch.x,touch.y]
 
 
 class MyPaintApp(App):
@@ -28,7 +26,7 @@ class MyPaintApp(App):
         with parent.canvas:
             Rectangle(source='court.png', pos=(0,100), size=(1024,568))
         self.painter = MyPaintWidget()
-        clearbtn = Button(text='Clear', pos=(475,0))
+        clearbtn = Button(text='Clear', pos=(475,0), size=(100,100))
         clearbtn.bind(on_release=self.clear_canvas)
         parent.add_widget(self.painter)
         parent.add_widget(clearbtn)
