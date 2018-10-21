@@ -13,10 +13,12 @@ radius = 3
 
 pygame.init()
 
+#Setting buttons and default background image
 button_green = pygame.Rect(585, 30, 30, 30)
 button_red = pygame.Rect(643, 30, 30, 30)
 image_dft = "court.png"
 
+#Function to reset app
 def resetApp(image):
 #Set background image of court
     w, h = pygame.display.get_surface().get_size()
@@ -37,6 +39,7 @@ def roundline(srf, color, start, end, radius=1):
         y = int( start[1]+float(i)/distance*dy)
         pygame.display.update(pygame.draw.circle(srf, color, (x,y), radius))
 
+#Set app
 resetApp(image_dft)
 
 #Pygame loop
