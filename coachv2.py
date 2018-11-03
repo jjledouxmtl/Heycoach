@@ -11,6 +11,7 @@ last_pos = (0,0)
 color = (0,0,255)
 radius = 3
 
+#Initiating pygame to set defaults
 pygame.init()
 
 #Setting buttons and default background image
@@ -39,7 +40,7 @@ def roundline(srf, color, start, end, radius=1):
         y = int( start[1]+float(i)/distance*dy)
         pygame.display.update(pygame.draw.circle(srf, color, (x,y), radius))
 
-#Set app
+#Set app default background
 resetApp(image_dft)
 
 #Pygame loop
