@@ -17,6 +17,7 @@ pygame.init()
 #Setting buttons and default background image
 button_green = pygame.Rect(585, 30, 30, 30)
 button_red = pygame.Rect(643, 30, 30, 30)
+button_blue = pygame.Rect(687, 30, 30, 30)
 image_dft = "court.png"
 
 #Function to reset app
@@ -28,6 +29,7 @@ def resetApp(image):
 #Setting buttons
     pygame.draw.rect(screen, [0,255,0], button_green)
     pygame.draw.rect(screen, [255,0,0], button_red)
+    pygame.draw.rect(screen, [0,0,255], button_blue)
     pygame.display.update()
 
 #Function to draw the lines
@@ -59,6 +61,9 @@ try:
         if e.type == pygame.MOUSEBUTTONDOWN:
             if button_green.collidepoint(e.pos):
                 resetApp(image_dft)
+#            elif button_blue.collidepoint(e.pos):
+#                filename = input("Please enter the name of the play")
+#                pygame.image.save(screen, filename+".png")
             elif button_red.collidepoint(e.pos):
                 os.remove("temp.png")
                 raise StopIteration
